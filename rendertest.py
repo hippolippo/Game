@@ -1,5 +1,5 @@
-import Rendering._3DList as l
-import Rendering.renderingEngine as r
+import _3DList as l
+import renderingEngine as r
 block = [
     [0,1,0],
     [1,0,0],
