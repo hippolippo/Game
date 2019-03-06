@@ -3,7 +3,7 @@ class _3DList:
     def __init__(self, xsize, ysize, zsize):
         self.xsize, self.ysize, self.zsize = xsize, ysize, zsize
         self.array = [[[None for z in range(zsize)] for y in range(ysize)] for x in range(xsize)]
-    def load(self,file):
+    def load(self,file,lists=False):
         loaded = open(file, "r")
         data = loaded.read()
         loaded.close()
@@ -11,8 +11,13 @@ class _3DList:
         for x in enumerate(data):
             for y in enumerate(x[0]):
                 for z in enumerate(y[0]):
-                    self.set_data(x[1],y[1],z[1],z[0])
-
+                    if lists:
+                        dat = z[1].split(" ")
+                        dat = [float(i) for i in dat]
+                    else:
+                        dat = z[1]
+                    self.set_data(x[0],y[0],z[0],dat)
+                    
     def set_data(self,x,y,z,data):
         self.array[x][y][z] = data
 
